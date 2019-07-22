@@ -2,6 +2,8 @@ const server = require('./server.js');
 const bcrypt = require('bcryptjs');
 const Users = require('./users/user-model');
 
+const auth = require('./auth/auth-middleware');
+
 const PORT = process.env.PORT || 5000;
 
 server.post('/api/register', (req, res) => {
@@ -14,7 +16,7 @@ server.post('/api/register', (req, res) => {
     .catch(error => res.status(500).json(error));
 });
 
-server.post('/api/login', (req, res) => {
+server.post('/api/login', auth, (req, res) => {
     let { username, password } = req.body;
 
     Users.findBy({ username })
@@ -31,7 +33,7 @@ server.post('/api/login', (req, res) => {
       });
 });
 
-server.get('/api/users', (req, res) => {
+server.get('/api/users', auth, (req, res) => {
     Users.find()
     .then(users => res.json(users))
     .catch(error => res.send(error));
