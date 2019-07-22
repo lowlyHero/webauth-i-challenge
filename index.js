@@ -5,7 +5,13 @@ const Users = require('./users/user-model');
 const PORT = process.env.PORT || 5000;
 
 server.post('/api/register', (req, res) => {
+    let user = req.body;
+    const hash = bcrypt.hashSync(user.password, 14);
+    user.password = hash;
 
+    Users.add(user)
+    .then(saved => res.status(201).json(saved))
+    .catch(error => res.status(500).json(error));
 });
 
 server.post('/api/login', (req, res) => {
