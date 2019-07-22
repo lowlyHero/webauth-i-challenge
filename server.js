@@ -5,7 +5,7 @@ const server = express();
 server.use(express.json());
 
 server.get('/', (req, res) => {
-    res.status(200).json({ message: 'Im not insane' });
+    res.send('<h1>Im not insane</h1>');
 });
 
 module.exports = server;
