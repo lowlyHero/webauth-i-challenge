@@ -1,0 +1,27 @@
+{
+  "name": "webauth-i-challenge",
+  "version": "1.0.0",
+  "description": "webauth-i-challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lowlyHero/webauth-i-challenge.git"
+  },
+  "author": "Eric Nunn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lowlyHero/webauth-i-challenge/issues"
+  },
+  "homepage": "https://github.com/lowlyHero/webauth-i-challenge#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "knex": "^0.19.0",
+    "nodemon": "^1.19.1",
+    "sqlite3": "^4.0.9"
+  }
+}
