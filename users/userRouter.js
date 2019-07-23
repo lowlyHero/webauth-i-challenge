@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const auth = require('../auth/auth-middleware');
+const auth = require('../middleware/auth/setup-middleware');
 
 const Users = require('./user-model');
 
-router.post('/api/register', (req, res) => {
+router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 14);
     user.password = hash;
@@ -14,7 +13,7 @@ router.post('/api/register', (req, res) => {
     .catch(error => res.status(500).json(error));
 });
 
-router.post('/api/login', auth, (req, res) => {
+router.post('/login', auth, (req, res) => {
     let { username, password } = req.body;
 
     Users.findBy({ username })
@@ -32,7 +31,7 @@ router.post('/api/login', auth, (req, res) => {
       });
 });
 
-router.get('/api/users', auth, (req, res) => {
+router.get('users', auth, (req, res) => {
     Users.find()
     .then(users => res.json(users))
     .catch(error => res.send(error));
