@@ -1,4 +1,4 @@
-const router = ('express').Router();
+const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const auth = require('../auth/auth-middleware');
 
@@ -38,4 +38,4 @@ router.get('/api/users', auth, (req, res) => {
     .catch(error => res.send(error));
 });
 
-module.exports = userRouter;
+module.exports = router;
