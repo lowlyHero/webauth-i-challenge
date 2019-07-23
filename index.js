@@ -6,6 +6,10 @@ const auth = require('./auth/auth-middleware');
 
 const PORT = process.env.PORT || 5000;
 
+server.get('/', (req, res) => {
+    res.send('<h1>Im not insane</h1>');
+});
+
 server.post('/api/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 14);
