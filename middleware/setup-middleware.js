@@ -5,10 +5,10 @@ const KnexSessionStore = require('connect-session-knex')(session);
 module.exports = server => {
     const configSession = {
         name: 'notsession',
-        secret: 'thesecretbox',
+        secret: process.env.SESSION_SECRET || 'thesecretbox',
         cookie: {
             maxAge: 1 * 24 * 60 * 60 * 1000,
-            secure: true,
+            secure: false,
             httpOnly: true,
         },
         resave: false,
@@ -21,7 +21,6 @@ module.exports = server => {
             clearInterval: 100 * 60 * 60,
         }),
     };  
-
 
     server.use(express.json());
     server.use(session(configSession));

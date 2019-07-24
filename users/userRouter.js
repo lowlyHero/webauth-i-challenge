@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const auth = require('../middleware/setup-middleware');
-
-// const router = require('express').Router();
 
 const Users = require('./user-model');
 const restrict = require('../middleware/auth/restrict-middleware');
