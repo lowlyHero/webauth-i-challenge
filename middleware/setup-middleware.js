@@ -14,7 +14,7 @@ module.exports = server => {
         resave: false,
         saveUninitialized: false,
         store: new KnexSessionStore({
-            knex: require('../../database/dbConfig'),
+            knex: require('../database/dbConfig'),
             tablename: 'sessions',
             createTable: true,
             sidfieldname: 'sid',

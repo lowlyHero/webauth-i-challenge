@@ -1,8 +1,11 @@
 const express = require('express');
 
 const userRouter = require('./users/userRouter');
+const setupGlobalMiddleware = require('./middleware/setup-middleware');
 
 const server = express();
+
+setupGlobalMiddleware(server);
 
 server.use('/users', userRouter);
 
